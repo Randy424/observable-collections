@@ -103,7 +103,7 @@ expect(paged.items()).toEqual([{ id: 1, name: 'One' }])
 ```json
 {
     "addedCount": 1,
-    "added": { "1": { "id": 1 }},
+    "added": { 1: { "id": 1 }},
 }
 ```
 
@@ -112,7 +112,7 @@ expect(paged.items()).toEqual([{ id: 1, name: 'One' }])
 ```json
 {
     "updatedCount": 1,
-    "updated": { "1": { "id": 1 }},
+    "updated": { 1: { "id": 1 }},
 }
 ```
 
@@ -121,7 +121,7 @@ expect(paged.items()).toEqual([{ id: 1, name: 'One' }])
 ```json
 {
     "revmovedCount": 1,
-    "removed": { "1": { "id": 1 }},
+    "removed": { 1: { "id": 1 }},
 }
 ```
 
