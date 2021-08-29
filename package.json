@@ -1,7 +1,7 @@
 {
     "name": "@jtalton/observable-collections",
-    "version": "1.0.0-0",
-    "description": "A packaged foo fooer for fooing foos",
+    "version": "1.0.0",
+    "description": "Collections of items that emit change events.",
     "author": {
         "name": "James Talton",
         "email": "talton@gmail.com"
