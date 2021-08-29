@@ -23,8 +23,9 @@ source.clear()
 Collection that filters a source collection.
 
 ```typescript
+const filtered = new FilteredCollection<ItemT>(source)
 const filterFn: FilterFn<T> = (item: T) => true
-const filtered = new FilteredCollection<ItemT>(source, filterFn)
+filtered.setFilterFn(filterFn)
 ```
 
 ### SearchedCollection(source: Collection, searchFn: SearchFn, search: string)
@@ -32,8 +33,8 @@ const filtered = new FilteredCollection<ItemT>(source, filterFn)
 Collection that searches a source collection.
 
 ```typescript
+const searched = new SearchedCollection<ItemT>(source)
 const searchFn: SearchFn<T> = (item: T) => 1
-const searched = new SearchedCollection<ItemT>(source, searchFn, "search string")
 searched.setSearchFn(searchFn)
 searched.setSearch("some search string")
 ```
@@ -43,8 +44,8 @@ searched.setSearch("some search string")
 Collection that sorts a source collection.
 
 ```typescript
+const sorted = new SortedCollection<ItemT>(source)
 const sortFn: SortFn<T> = (item: T) => 0
-const sorted = new SortedCollection<ItemT>(source, sortFn)
 sorted.setSortFn(sortFn)
 ```
 
@@ -53,7 +54,7 @@ sorted.setSortFn(sortFn)
 Collection that keeps its items in sync with a source collection.
 
 ```typescript
-const selected = new SelectedCollection<ItemT>(source, sortFn)
+const selected = new SelectedCollection<ItemT>(source)
 selected.insert(item)
 ```
 
@@ -62,9 +63,9 @@ selected.insert(item)
 Collection used to page a source collection.
 
 ```typescript
+const paged = new PagedCollection(source)
 const page = 1
 const pageSize = 10
-const paged = new PagedCollection(source, page, pageSize)
 paged.setPage(page, pageSize)
 ```
 
