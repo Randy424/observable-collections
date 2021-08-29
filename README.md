@@ -1,4 +1,4 @@
-# Event Collections
+# Observable Collections
 
 Collections of items that emit change events.
 
