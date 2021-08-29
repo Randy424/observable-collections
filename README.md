@@ -141,7 +141,7 @@ Emitted when items are removed.
 
 ### Ordered Event
 
-Emitted when the order of the items has changed. (Ordered collections only like search and sorted)
+Emitted when the order of the items has changed. (Only ordered collections like searched, sorted, and paged.)
 
 ```js
 {
