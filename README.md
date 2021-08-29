@@ -2,7 +2,7 @@
 
 Collections of items that emit change events.
 
-Collections can be hooked together to create a pipeline which can efficiently filters, searchs, sorts, and pages the source collection.
+Collections can be hooked together to create a pipeline which efficiently filters, searches, sorts, and pages the source collection based on the emitted change events.
 
 ## Collection Types
 
@@ -35,7 +35,7 @@ Collection that searches a source collection.
 const searchFn: SearchFn<T> = (item: T) => 1
 const searched = new SearchedCollection<ItemT>(source, searchFn, "search string")
 searched.setSearchFn(searchFn)
-searched.setSearchString("some search string")
+searched.setSearch("some search string")
 ```
 
 ### SortedCollection(source: Collection, sortFn: SortFn)
