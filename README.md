@@ -2,16 +2,71 @@
 
 Collections of items that emit change events.
 
-Collections work together to create a pipeline which can efficiently filter, search, sort, and page the collection.
+Collections can be hooked together to create a pipeline which can efficiently filters, searchs, sorts, and pages the source collection.
 
 ## Collection Types
 
-- **Collection**: A writeable collection that is used as the source for other collections.
-- **FilteredCollection**: Used to filter a source collection.
-- **SearchedCollection**: Used to search a source collection.
-- **SortedCollection**: Used to sort a source collection.
-- **SelectedCollection**: Used to manage the selected items of a source collection.
-- **PagedCollection**: Used to page a source collection.
+### Collection(keyFn: KeyFn)
+
+A writeable collection that is used as the source for other collections.
+
+```typescript
+const keyFn: KeyFn<T> = (item: T) => item.id
+const source = new Collection<T>(keyFn)
+source.insert(item)
+source.remove(item)
+source.clear()
+```
+
+### FilteredCollection(source: Collection, filterFn: FilterFn)
+
+Collection that filters a source collection.
+
+```typescript
+const filterFn: FilterFn<T> = (item: T) => true
+const filtered = new FilteredCollection<ItemT>(source, filterFn)
+```
+
+### SearchedCollection(source: Collection, searchFn: SearchFn, search: string)
+
+Collection that searches a source collection.
+
+```typescript
+const searchFn: SearchFn<T> = (item: T) => 1
+const searched = new SearchedCollection<ItemT>(source, searchFn, "search string")
+searched.setSearchFn(searchFn)
+searched.setSearchString("some search string")
+```
+
+### SortedCollection(source: Collection, sortFn: SortFn)
+
+Collection that sorts a source collection.
+
+```typescript
+const sortFn: SortFn<T> = (item: T) => 0
+const sorted = new SortedCollection<ItemT>(source, sortFn)
+sorted.setSortFn(sortFn)
+```
+
+### SelectedCollection(source: Collection)
+
+Collection that keeps its items in sync with a source collection.
+
+```typescript
+const selected = new SelectedCollection<ItemT>(source, sortFn)
+selected.insert(item)
+```
+
+### PagedCollection(source: Collection, page:number, pageSize: number)
+
+- Collection used to page a source collection.
+
+```typescript
+const page = 1
+const pageSize = 10
+const paged = new PagedCollection(source, page, pageSize)
+paged.setPage(page, pageSize)
+```
 
 ## Code Example
 
@@ -39,6 +94,12 @@ const selected = new SelectedCollection(source)
 source.insert({ id: 1, name: 'One' })
 
 expect(paged.items()).toEqual([{ id: 1, name: 'One' }])
+
+selected.dispose()
+paged.dispose()
+sorted.dispose()
+filtered.dispose()
+source.dispose()
 ```
 
 ## Events
