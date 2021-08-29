@@ -68,6 +68,10 @@ export class SearchedCollection<T> extends CollectionEmitter<T> implements IColl
         this.search()
     }
 
+    public clearSearch(): void {
+        this.setSearch(undefined)
+    }
+
     public setSearchFn(searchFn?: SearchFn<T>): void {
         if (this.searchFn === searchFn) return
         this.searchFn = searchFn

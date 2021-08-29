@@ -59,7 +59,7 @@ selected.insert(item)
 
 ### PagedCollection(source: Collection, page:number, pageSize: number)
 
-- Collection used to page a source collection.
+Collection used to page a source collection.
 
 ```typescript
 const page = 1
@@ -79,7 +79,7 @@ interface ItemT {
 const keyFn = (item: ItemT) => item.id.toString()
 const source = new Collection<ItemT>(keyFn)
 
-sconst filterFn = (_item: ItemT) => true
+const filterFn = (_item: ItemT) => true
 const filtered = new FilteredCollection(source, filterFn)
 
 const sortFn = (lhs: ItemT, rhs: ItemT) => lhs.name.localeCompare(rhs.name)
@@ -94,12 +94,6 @@ const selected = new SelectedCollection(source)
 source.insert({ id: 1, name: 'One' })
 
 expect(paged.items()).toEqual([{ id: 1, name: 'One' }])
-
-selected.dispose()
-paged.dispose()
-sorted.dispose()
-filtered.dispose()
-source.dispose()
 ```
 
 ## Events

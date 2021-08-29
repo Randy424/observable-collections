@@ -61,6 +61,10 @@ export class SortedCollection<T> extends CollectionEmitter<T> implements ICollec
         }
     }
 
+    public clearSort(): void {
+        this.setSort(undefined)
+    }
+
     private handleChange(change: CollectionChange<T>): void {
         const sourceItems = this.source.items()
         if (this.sortedItems) {

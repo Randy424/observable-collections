@@ -92,6 +92,10 @@ export class FilteredCollection<T> extends EventEmitter implements ICollection<T
         }
     }
 
+    public clearFilter(): void {
+        this.setFilter(undefined)
+    }
+
     private handleChange(change: CollectionChange<T>) {
         if (!this.filteredCollection || !this.filterFn) {
             this.emit('change', change)
