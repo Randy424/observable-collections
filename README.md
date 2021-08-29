@@ -80,16 +80,16 @@ const keyFn = (item: ItemT) => item.id.toString()
 const source = new Collection<ItemT>(keyFn)
 
 const filterFn = (_item: ItemT) => true
-const filtered = new FilteredCollection(source, filterFn)
+const filtered = new FilteredCollection(source)
+filtered.setFilterFn(filterFn)
 
 const sortFn = (lhs: ItemT, rhs: ItemT) => lhs.name.localeCompare(rhs.name)
-const sorted = new SortedCollection(filtered, sortFn)
+const sorted = new SortedCollection(filtered)
+sorted.setSortFn(sortFn)
 
 const page = 1
 const pageSize = 10
 const paged = new PagedCollection(sorted, page, pageSize)
-
-const selected = new SelectedCollection(source)
 
 source.insert({ id: 1, name: 'One' })
 
@@ -101,7 +101,7 @@ expect(paged.items()).toEqual([{ id: 1, name: 'One' }])
 All collections extend EventEmitter and emit a "change" event when the collection changes.
 
 ``` typescript
-collection.on("change", (change: CollectionChange<T>=>{
+collection.on("change", (change: CollectionChange<T> => {
     // Handle change
 }))
 ```
