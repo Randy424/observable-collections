@@ -14,7 +14,7 @@ A writeable collection that is used as the source for other collections.
 const keyFn: KeyFn<T> = (item: T) => item.id
 const source = new Collection<T>(keyFn)
 source.insert(item)
-source.remove(item)
+source.removeKey(item.id)
 source.clear()
 ```
 
@@ -76,7 +76,7 @@ interface ItemT {
     name: string
 }
 
-const keyFn = (item: ItemT) => item.id.toString()
+const keyFn = (item: ItemT) => item.id
 const source = new Collection<ItemT>(keyFn)
 
 const filterFn = (_item: ItemT) => true
