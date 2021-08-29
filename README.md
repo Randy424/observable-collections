@@ -98,7 +98,17 @@ expect(paged.items()).toEqual([{ id: 1, name: 'One' }])
 
 ## Events
 
+All collections extend EventEmitter and emit a "change" event when the collection changes.
+
+``` typescript
+collection.on("change", (change: CollectionChange<T>=>{
+    // Handle change
+}))
+```
+
 ### Added Event
+
+Emitted when items are added.
 
 ```js
 {
@@ -109,6 +119,8 @@ expect(paged.items()).toEqual([{ id: 1, name: 'One' }])
 
 ### Updated Event
 
+Emitted when items are updated.
+
 ```js
 {
     "updatedCount": 1,
@@ -118,6 +130,8 @@ expect(paged.items()).toEqual([{ id: 1, name: 'One' }])
 
 ### Removed Event
 
+Emitted when items are removed.
+
 ```js
 {
     "revmovedCount": 1,
@@ -126,6 +140,8 @@ expect(paged.items()).toEqual([{ id: 1, name: 'One' }])
 ```
 
 ### Ordered Event
+
+Emitted when the order of the items has changed. (Ordered collections only like search and sorted)
 
 ```js
 {
