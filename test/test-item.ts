@@ -17,3 +17,7 @@ export const testItem2: TestItem = {
     id: 2,
     name: '2',
 }
+
+export function getTestItemKey(item: TestItem): number {
+    return item.id
+}
