@@ -1,6 +1,6 @@
 {
     "name": "@jtalton/observable-collections",
-    "version": "1.0.0",
+    "version": "0.0.0",
     "description": "Collections of items that emit change events.",
     "author": {
         "name": "James Talton",
