@@ -15,4 +15,7 @@ jobs:
             - run: npm run jest
             - run: npm run eslint
             - run: npm run prettier
-            - run: ./scripts/publish.sh
+            - run: npm run build
+            - env:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+              run: ./scripts/publish.sh
