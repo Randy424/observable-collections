@@ -80,12 +80,12 @@ interface ItemT {
 const keyFn = (item: ItemT) => item.id
 const source = new Collection<ItemT>(keyFn)
 
-const filterFn = (_item: ItemT) => true
 const filtered = new FilteredCollection(source)
+const filterFn = (_item: ItemT) => true
 filtered.setFilterFn(filterFn)
 
-const sortFn = (lhs: ItemT, rhs: ItemT) => lhs.name.localeCompare(rhs.name)
 const sorted = new SortedCollection(filtered)
+const sortFn = (lhs: ItemT, rhs: ItemT) => lhs.name.localeCompare(rhs.name)
 sorted.setSortFn(sortFn)
 
 const page = 1
