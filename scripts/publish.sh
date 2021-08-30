@@ -24,8 +24,8 @@ if [ "$PUBLISHED_SHA" != "$NEW_SHA" ]; then
 
     echo Publish: Publishing ${NEW_VERSION}
 
-    # echo registry=http://registry.npmjs.org > .npmrc
-    # echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} >> .npmrc
+    echo registry=http://registry.npmjs.org > .npmrc
+    echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} >> .npmrc
 
     npm publish
 else
