@@ -1,5 +1,4 @@
-name: build
-
+name: cron
 on:
     push:
         branches: [main]
