@@ -1,9 +1,9 @@
-name: main
+name: cron
 on:
     schedule:
         - cron: '0 0 * * 1'
 jobs:
-    build:
+    cron:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
